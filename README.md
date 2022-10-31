@@ -12,8 +12,6 @@ Fundamental Computer Science
 
 # Tech Interview Questions
 
-**_출처 : https://velog.io/@hygoogi/%EA%B8%B0%EC%88%A0-%EB%A9%B4%EC%A0%91-%EC%A7%88%EB%AC%B8-%EB%AA%A8%EC%9D%8C_**
-
 # 운영체제
 
 ## 프로세스
@@ -212,3 +210,6 @@ Fundamental Computer Science
 - [ ] Monolitc Architecture, Micro Service Architecture에 대해 각각 설명해 주세요.
 - [ ] 애자일 방법론이란?
 - [ ] 도커란 무엇인가요?
+
+
+**_출처 : https://velog.io/@hygoogi/%EA%B8%B0%EC%88%A0-%EB%A9%B4%EC%A0%91-%EC%A7%88%EB%AC%B8-%EB%AA%A8%EC%9D%8C_**
