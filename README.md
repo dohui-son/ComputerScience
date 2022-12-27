@@ -263,3 +263,5 @@ Fundamental Computer Science
 - [ ] var let const 차이점
 - [ ] CORS를 대처하는 방법과 우회하는 방법
 - [ ] MVVM 모델에 대해서 설명해 주세요
+
+**_출처 : https://realmojo.tistory.com/300 _**
