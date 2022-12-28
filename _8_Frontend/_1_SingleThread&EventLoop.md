@@ -21,10 +21,13 @@
 - 이렇게, 다른 함수가 실행을 끝낸뒤 콜백함수가 실행되게 할 수 있기에 비동기적 함수를 동기적으로 처리할 때도 사용될 수 있습니다.
 - 콜백의 단점으로 callback hell을 꼽을 수 있습니다.
 - [ promise ] 프로미스는 자바스크립트 ajax나 setTimeout과 같은 비동기 처리에 사용되는 객체입니다.
+- promise는 callback hell을 promise로 해결 할 수 있습니다. 또한 promise chaining으로 여러 개의 프로미스를 연결하여 사용할 수도 있습니다. promise 코드가 콜백에 비해 패턴이 정형식화 되어있어서 callback보다 상대적으로 가독성이 뛰어납니다.
 - 프로미스는 3가지 상태를 갖습니다. 이 상태란 프로미스 처리 과정을 의미하는테, 프로미스는 생성하고 종료될 때까지 3가지 pending(대기) / fulfilled(이행) / rejected(실패) 상태를 갖습니다.
+
 - new Promise() 메서드를 호출하면 pending(대기) 상태가 됩니다.
 - new Promise(function(resolve,reject){}) 메서드를 호출할 때 콜백 함수를 선언할 수 있고, 콜백 함수의 인자로 resolve, reject를 사용할 수 있습니다.
-- 이 resolve를 실행하면, ... -> 작성중
+- 이 resolve를 실행하면, fulfilled(이행, 완료) 상태가 되기에 then()을 이용하여 처리 결과값을 받을 수 있습니다. reject를 호출하면 reject(실패)상태가 됩니다. reject 상태가 되면 catch로 실패 처리 결과 값(err)을 받을 수 있습니다.
+
 ```Javascript
 function getData(callback) {
   return new Promise(function(resolve, reject) {
@@ -41,6 +44,30 @@ getData().then(function(tableData) {
 });
 
 ```
+
+```Javascript
+function getData() {
+  return new Promise(function(resolve, reject) {
+    $.get('url 주소/products/1', function(response) {
+      if (response) {
+        resolve(response);
+      }
+      reject(new Error("Request is failed"));
+    });
+  });
+}
+
+// 위 $.get() 호출 결과에 따라 'response' 또는 'Error' 출력
+getData().then(function(data) {
+  console.log(data); // response 값 출력
+}).catch(function(err) {
+  console.error(err); // Error 출력
+});
+
+```
+
+- [ async / await ] aysnc와 await은 자바스크립트의 비동기 처리 패턴 중 가장 최근에 나온 문법입니다.
+- 콜백 함수와 프로미스의 단점을 보완하고
 
 ## Event Loop 에 대해서 알고 있으신가요?
 
@@ -59,3 +86,5 @@ getData().then(function(tableData) {
 - https://velog.io/@eamon3481/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%8B%B1%EA%B8%80%EC%8A%A4%EB%A0%88%EB%93%9C%EC%9D%B8%EB%8D%B0-%EC%99%9C-%EB%B9%84%EB%8F%99%EA%B8%B0%EC%A0%81-%EC%9D%BC%EA%B9%8C
 - https://hongchangsub.com/javascript-asyncandsync/
 - https://velog.io/@ko1586/Callback%ED%95%A8%EC%88%98%EB%9E%80-%EB%AD%94%EB%8D%B0
+- https://joshua1988.github.io/web-development/javascript/promise-for-beginners/
+- https://springfall.cc/post/7
